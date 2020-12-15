@@ -1,25 +1,41 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
+import Memo from './memo/Memo';
+import AddForm from './memo/AddForm';
+import FindForm from './memo/FindForm';
+import DelForm from './memo/DelForm';
+import PersistForm from './memo/PersistForm'
 
-function App() {
+// Appコンポーネント
+class App extends Component {
+  td = {
+    width:"250px"
+  }
+
+
+  constructor(props){
+    super(props);
+  }
+
+// import PersistForm from './memo/PersistForm'; を追記しておく
+
+render() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Memo</h1>
+      <AddForm />
+      <hr />
+      <table><tbody><tr>
+        <td style={this.td}><FindForm /></td>
+        <td style={this.td}><DelForm /></td>
+        <td style={this.td}><PersistForm /></td>
+      </tr></tbody></table>
+      <Memo />
     </div>
   );
 }
+}
 
-export default App;
+
+export default connect()(App);
